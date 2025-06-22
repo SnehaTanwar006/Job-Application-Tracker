@@ -38,7 +38,7 @@ Visit [http://localhost:5000](http://localhost:5000)
 ---
 
 ## 📸 Screenshot
-![alt text]({73495E0B-E026-4C32-808B-142B27FE9848}.png)
+![Screenshot](screenshot.jpg)
 
 ## 📂 Folder Structure
 ```
