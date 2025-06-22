@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Tracker</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Job Application Tracker</h1>
+    <form action="/" method="get" style="margin-bottom: 20px; justify-content: center;">
+        <input type="text" name="q" placeholder="Search by company or role..." value="{{ search_query }}">
+        <button type="submit">Search</button>
+        {% if search_query %}
+            <a href="/">Clear</a>
+        {% endif %}
+    </form>    
+    <form action="/add" method="post">
+        <input type="text" name="company" placeholder="Company" required>
+        <input type="text" name="role" placeholder="Role" required>
+        <input type="text" name="status" placeholder="Status (e.g., Applied)" required>
+        <input type="date" name="date" required>
+        <button type="submit">Add</button>
+    </form>
+
+    <table>
+        <tr>
+            <th>Company</th><th>Role</th><th>Status</th><th>Date Applied</th><th>Actions</th>
+        </tr>
+        {% for job in jobs %}
+        <tr>
+            <td>{{ job[1] }}</td>
+            <td>{{ job[2] }}</td>
+            <td>{{ job[3] }}</td>
+            <td>{{ job[4] }}</td>
+            <td>
+                <a href="/edit/{{ job[0] }}">Edit</a> |
+                <a href="/delete/{{ job[0] }}">Delete</a>
+            </td>            
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
